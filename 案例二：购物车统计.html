@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			.fl {
+				float: left;
+			}
+			
+			.fr {
+				float: right;
+			}
+			
+			.red-text {
+				color: #e94826;
+			}
+			
+			ul,
+			ol {
+				list-style: none;
+			}
+			
+			img {
+				vertical-align: middle;
+			}
+			
+			a {
+				text-decoration: none;
+				color: #333;
+			}
+			
+			.shopping-cart {
+				width: 1200px;
+				font-size: 14px;
+				margin: 50px auto;
+				border: 1px solid #e3e3e3;
+				border-top: 2px solid #317ee7;
+			}
+			
+			.shopping-cart h4 {
+				line-height: 68px;
+				color: #317ee7;
+				font-size: 16px;
+				text-align: left;
+				padding-left: 20px;
+			}
+			
+			.shopping-cart .cart-title {
+				height: 38px;
+				line-height: 38px;
+				text-align: center;
+				padding: 0 20px;
+				background: #f7f7f7;
+				border-top: 1px solid #e3e3e3;
+				border-bottom: 1px solid #e3e3e3;
+			}
+			
+			.shopping-cart .cart-title .td-check .check-span {
+				margin: 9px 6px 0 0;
+			}
+			
+			.shopping-cart .check-span {
+				display: block;
+				width: 24px;
+				height: 20px;
+				background: url(img/icon.png) no-repeat 0 0;
+			}
+			
+			.shopping-cart .check-span.check-true {
+				background: url("img/icon.png") no-repeat 0 -22px;
+			}
+			
+			.cart-title .td-check,
+			.cart-title .td-product,
+			.cart-title .td-num,
+			.cart-title .td-price,
+			.cart-title .td-total,
+			.cart-title .td-do {
+				float: left;
+			}
+			
+			.shopping-cart .td-check {
+				width: 70px;
+			}
+			
+			.shopping-cart .td-product {
+				width: 460px;
+			}
+			
+			.shopping-cart .cart-title .td-product {
+				text-align: center;
+				font-size: 14px;
+			}
+			
+			.shopping-cart .td-num,
+			.shopping-cart .td-price,
+			.shopping-cart .td-total {
+				width: 160px;
+			}
+			
+			.shopping-cart .td-do {
+				width: 150px;
+			}
+			
+			.shopping-cart .cart-product {
+				padding: 0 20px;
+				text-align: center;
+			}
+			
+			.shopping-cart .cart-product table {
+				width: 100%;
+				text-align: center;
+				font-size: 14px;
+			}
+			
+			.shopping-cart .cart-product table tr {
+				border-bottom: 1px dashed #e3e3e3;
+			}
+			
+			.shopping-cart .cart-product table td {
+				padding: 20px 0;
+			}
+			
+			.shopping-cart .cart-product table .td-product {
+				text-align: left;
+				font-size: 12px;
+				line-height: 20px;
+			}
+			
+			.shopping-cart .cart-product table .td-product img {
+				border: 1px solid #e3e3e3;
+				margin-right: 10px;
+			}
+			
+			.shopping-cart .cart-product table .td-product .product-info {
+				display: inline-block;
+				vertical-align: middle;
+			}
+			
+			.shopping-cart .cart-product table .product-num {
+				border: 1px solid #e3e3e3;
+				display: inline-block;
+				text-align: center;
+			}
+			
+			.shopping-cart .cart-product table .product-num .num-do {
+				display: block;
+				width: 24px;
+				height: 28px;
+				background: #f7f7f7;
+			}
+			
+			.shopping-cart .cart-product table .product-num .num-reduce span {
+				display: block;
+				width: 6px;
+				height: 2px;
+				margin: 13px auto 0 auto;
+				background: url(img/icon.png) no-repeat -40px -22px;
+			}
+			
+			.shopping-cart .cart-product table .product-num .num-add span {
+				display: block;
+				width: 8px;
+				height: 8px;
+				margin: 10px auto 0 auto;
+				background: url(img/icon.png) no-repeat -60px -22px;
+			}
+			
+			.shopping-cart .cart-product table .product-num .num-input {
+				width: 42px;
+				height: 28px;
+				line-height: 28px;
+				border: none;
+				text-align: center;
+			}
+			
+			.shopping-cart .cart-info {
+				height: 50px;
+				line-height: 50px;
+				background: #f7f7f7;
+				padding-left: 20px;
+			}
+			
+			.shopping-cart .cart-info .delect-product {
+				color: #666;
+			}
+			
+			.shopping-cart .cart-info .delect-product span {
+				display: inline-block;
+				width: 13px;
+				height: 15px;
+				vertical-align: top;
+				margin: 18px 8px 0 0;
+				background: url(img/icon.png) no-repeat -60px 0;
+			}
+			
+			.shopping-cart .cart-info .keep-shopping {
+				color: #666;
+				margin-left: 40px;
+			}
+			
+			.shopping-cart .cart-info .keep-shopping span {
+				display: inline-block;
+				width: 15px;
+				height: 15px;
+				vertical-align: top;
+				margin: 18px 8px 0 0;
+				background: url(img/icon.png) no-repeat -40px 0;
+			}
+			
+			.shopping-cart .cart-info .btn-buy {
+				display: block;
+				width: 110px;
+				height: 50px;
+				color: #fff;
+				font-size: 20px;
+				text-align: center;
+				margin-left: 30px;
+				background: #ff7700;
+			}
+			
+			.shopping-cart .cart-info .product-total {
+				font-size: 14px;
+				color: #e94826;
+			}
+			
+			.shopping-cart .cart-info .product-total span {
+				font-size: 20px;
+			}
+			
+			.shopping-cart .cart-info .check-num {
+				color: #333;
+			}
+			
+			.shopping-cart .cart-info .check-num span {
+				color: #e94826;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="shopping-cart" id="cart">
+			<h4>购物清单</h4>
+			<ul class="cart-title clearfix">
+				<li class="td-check"><span class="check-span fl check-all" :class="{'check-true':isSelectAll}" @click="selectProduct(isSelectAll)"></span>全选</li>
+				<li class="td-product">商品</li>
+				<li class="td-num">数量</li>
+				<li class="td-price">单价(元)</li>
+				<li class="td-total">金额(元)</li>
+				<li class="td-do">操作</li>
+			</ul>
+			<div class="cart-product clearfix">
+				<table>
+					<tbody>
+						<!--遍历的时候带上索引-->
+						<tr v-for="(item,index) in productList">
+							<td class="td-check"><span class="check-span" @click="item.select=!item.select" :class="{'check-true':item.select}"></span></td>
+							<td class="td-product">
+								<img :src="item.pro_img" width="98" height="98" />
+								<div class="product-info">
+									<h6>{{item.pro_name}}</h6>
+									<p>品牌：{{item.pro_brand}}&nbsp;&nbsp;产地：{{item.pro_place}}</p>
+									<p>规格/纯度:{{item.pro_purity}}&nbsp;&nbsp;起定量：{{item.pro_min}}</p>
+									<p>配送仓储：{{item.pro_depot}}</p>
+								</div>
+								<div class="clearfix"></div>
+							</td>
+							<td class="td-num">
+								<div class="product-num">
+									<a href="javascript:;" class="num-reduce num-do fl" @click="item.pro_num>0?item.pro_num--:''"><span></span></a>
+									<input type="text" class="num-input" v-model="item.pro_num">
+									<a href="javascript:;" class="num-add num-do fr" @click="item.pro_num++"><span></span></a>
+								</div>
+							</td>
+							<td class="td-price">
+								<p class="red-text">￥<span class="price-text">{{item.pro_price.toFixed(2)}}</span></p>
+							</td>
+							<td class="td-total">
+								<p class="red-text">￥<span class="total-text">{{item.pro_price*item.pro_num}}</span></p>
+							</td>
+							<td class="td-do">
+								<a href="javascript:;" class="product-delect" @click="deleteOneProduct(index)">删除</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="cart-info">
+				<a href="javascript:;" class="delect-product" @click="deleteProduct"><span></span>删除所选商品</a>
+				<a href="#" class="keep-shopping"><span></span>继续购物</a>
+				<a href="javascript:;" class="btn-buy fr">去结算</a>
+				<p class="fr product-total">￥<span>{{getTotal.totalPrice}}</span></p>
+				<p class="fr check-num"><span>{{getTotal.totalNum}}</span>件商品总计（不含运费）：</p>
+			</div>
+		</div>
+
+		<script src="https://cdn.bootcss.com/vue/2.4.4/vue.min.js"></script>
+		<script>
+			new Vue({
+				el: '#cart',
+				data: {
+					productList: [{
+							'pro_name': '【斯文】甘油 | 丙三醇', //产品名称
+							'pro_brand': 'skc', //品牌名称
+							'pro_place': '韩国', //产地
+							'pro_purity': '99.7%', //规格
+							'pro_min': "215千克", //最小起订量
+							'pro_depot': '上海仓海仓储', //所在仓库
+							'pro_num': 3, //数量
+							'pro_img': 'img/01.png', //图片链接
+							'pro_price': 800 //单价
+						},
+						{
+							'pro_name': '【斯文】甘油 | 丙三醇', //产品名称
+							'pro_brand': 'skc', //品牌名称
+							'pro_place': '韩国', //产地
+							'pro_purity': '99.7%', //规格
+							'pro_min': "215千克", //最小起订量
+							'pro_depot': '上海仓海仓储', //所在仓库
+							'pro_num': 3, //数量
+							'pro_img': 'img/02.png', //图片链接
+							'pro_price': 800 //单价
+						},
+						{
+							'pro_name': '【斯文】甘油 | 丙三醇', //产品名称
+							'pro_brand': 'skc', //品牌名称
+							'pro_place': '韩国', //产地
+							'pro_purity': '99.7%', //规格
+							'pro_min': "215千克", //最小起订量
+							'pro_depot': '上海仓海仓储', //所在仓库
+							'pro_num': 3, //数量
+							'pro_img': 'img/03.png', //图片链接
+							'pro_price': 800 //单价
+						}
+					]
+				},
+				computed: {
+					//检测是否全选
+					isSelectAll: function() {
+						//如果productList中每一条数据的select都为true，返回true，否则返回false;
+						return this.productList.every(function(val) {
+							return val.select;
+						})
+					},
+					//获取总价和产品总件数
+					getTotal: function() {
+						//获取productList中select为true的数据。
+						var _proList = this.productList.filter(function(val) {
+								return val.select
+							}),
+							totalPrice = 0;
+						for(var i = 0, len = _proList.length; i < len; i++) {
+							//总价累加
+							totalPrice += _proList[i].pro_num * _proList[i].pro_price;
+						}
+						//选择产品的件数就是_proList.length，总价就是totalPrice
+						return {
+							totalNum: _proList.length,
+							totalPrice: totalPrice
+						}
+					}
+				},
+				methods: {
+					//全选与取消全选
+					selectProduct: function(_isSelect) {
+						//遍历productList，全部取反
+						for(var i = 0, len = this.productList.length; i < len; i++) {
+							this.productList[i].select = !_isSelect;
+						}
+					},
+					//删除已经选中(select=true)的产品
+					deleteProduct: function() {
+						this.productList = this.productList.filter(function(item) {
+							return !item.select
+						})
+					},
+					//删除单条产品
+					deleteOneProduct: function(index) {
+						//根据索引删除productList的记录
+						this.productList.splice(index, 1);
+					},
+				},
+				mounted: function() {
+					var _this = this;
+					//为productList添加select（是否选中）字段，初始值为true
+					this.productList.map(function(item) {
+						_this.$set(item, 'select', true);
+					})
+				}
+			})
+		</script>
+	</body>
+
+</html>

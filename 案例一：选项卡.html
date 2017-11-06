@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			#tab {
+				width: 600px;
+				margin: 0 auto;
+			}
+			
+			.tab-list {
+				font-size: 0;
+				width: 600px;
+			}
+			
+			.tab-list a {
+				display: inline-block;
+				height: 40px;
+				line-height: 40px;
+				font-size: 16px;
+				width: 25%;
+				text-align: center;
+				background: #ccc;
+				color: #333;
+				text-decoration: none;
+			}
+			
+			.tab-list .cur {
+				background: #09f;
+				color: #fff;
+			}
+			
+			.tab-content li {
+				list-style: none;
+				border: 1px solid #ccc;
+				height: 400px;
+				padding-top: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div id="tab">
+			<div class="tab-list">
+				 <!--点击设置curId的值  如果curId等于0，第一个a添加cur类名，如果curId等于1，第二个a添加cur类名，以此类推。
+				 添加了cur类名，a就会改变样式 
+				 @click,:class ,v-show这三个是vue常用的指令或添加事件的方式-->
+				<a href="#" @click="curId=0" :class="{'cur':curId===0}">html</a>
+				<a href="#" @click="curId=1" :class="{'cur':curId===1}">css</a>
+				<a href="#" @click="curId=2" :class="{'cur':curId===2}">javascript</a>
+				<a href="#" @click="curId=3" :class="{'cur':curId===3}">vue</a>
+			</div>
+			<ul class="tab-content">
+				<!--根据curId的值显示div,如果curId等于0，第一个div显示，其它三个div不显示。如果curId等于1，第二个div显示，其它三个div不显示。以此类推-->
+				<li v-show="curId===0">html</li>
+				<li v-show="curId===1">css</li>
+				<li v-show="curId===2"> javascript</li>
+				<li v-show="curId===3">vue</li>
+			</ul>
+		</div>
+
+		<script src="https://cdn.bootcss.com/vue/2.4.4/vue.min.js"></script>
+		<script type="text/javascript">
+			new Vue({
+				el: '#tab',
+				data: {
+					curId: 0
+				}
+			})
+		</script>
+	</body>
+
+</html>
